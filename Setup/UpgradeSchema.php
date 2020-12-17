@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Inchoo\Sample03\Setup;
 
+use Magento\Framework\DB\Adapter\AdapterInterface;
 use Magento\Framework\Setup\ModuleContextInterface;
 use Magento\Framework\Setup\SchemaSetupInterface;
 use Magento\Framework\Setup\UpgradeSchemaInterface;
@@ -14,7 +15,7 @@ class UpgradeSchema implements UpgradeSchemaInterface
     {
         $setup->startSetup();
 
-        $tableName = 'inchoo-news';
+        $tableName = 'inchoo_news';
 
         $setup->getConnection()->addColumn(
             $setup->getTable($tableName),
@@ -48,6 +49,16 @@ class UpgradeSchema implements UpgradeSchemaInterface
             ]
         );
 
+        $setup->getConnection()->addForeignKey(
+            $setup->getFkName('inchoo_news_comments', 'news_id', 'inchoo_news', 'news_id'),
+            $setup->getTable('inchoo_news_comments'),
+            'news_id',
+            $setup->getTable('inchoo_news'),
+            'news_id',
+        );
+
+
         $setup->endSetup();
     }
 }
+

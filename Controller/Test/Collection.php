@@ -11,18 +11,23 @@ class Collection  extends \Magento\Framework\App\Action\Action
      */
     protected $newsCollectionFactory;
 
+    protected $commentsCollectionFactory;
+
     /**
      * Controller constructor.
      * @param Context $context
      * @param \Inchoo\Sample03\Model\ResourceModel\News\CollectionFactory $newsCollectionFactory
+     * @param \Inchoo\Sample03\Model\ResourceModel\Comments\CollectionFactory $commentsCollectionFactory
      */
     public function __construct(
         Context $context,
-        \Inchoo\Sample03\Model\ResourceModel\News\CollectionFactory $newsCollectionFactory
+        \Inchoo\Sample03\Model\ResourceModel\News\CollectionFactory $newsCollectionFactory,
+        \Inchoo\Sample03\Model\ResourceModel\Comments\CollectionFactory $commentsCollectionFactory
     ) {
         parent::__construct($context);
 
         $this->newsCollectionFactory = $newsCollectionFactory;
+        $this->commentsCollectionFactory = $commentsCollectionFactory;
     }
 
     /**
@@ -32,10 +37,11 @@ class Collection  extends \Magento\Framework\App\Action\Action
     {
 
         $newsCollection = $this->newsCollectionFactory->create();
+        $commentCollection = $this->commentsCollectionFactory->create();
 
         //$newsCollection->addFieldToFilter('id', ['gt' => 5]]);
 
-        foreach($newsCollection as $news) {
+        foreach($commentCollection as $news) {
             var_dump(get_class($news));
             var_dump($news->debug());
         }

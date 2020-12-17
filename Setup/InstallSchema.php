@@ -35,6 +35,24 @@ class InstallSchema implements InstallSchemaInterface
 
         $setup->getConnection()->createTable($table);
 
+        $table = $setup->getConnection()->newTable(
+            $setup->getTable('inchoo_news_comments')
+        )->addColumn(
+            'comment_id',
+            \Magento\Framework\DB\Ddl\Table::TYPE_INTEGER,
+            null,
+            ['identity' => true, 'unsigned' => true, 'nullable' => false, 'primary' => true],
+            'Comment id'
+        )->addColumn(
+            'news_id',
+            \Magento\Framework\DB\Ddl\Table::TYPE_INTEGER,
+            null,
+            ['unsigned' => true],
+            'News Id'
+        );
+
+        $setup->getConnection()->createTable($table);
+
         $setup->endSetup();
     }
 }
