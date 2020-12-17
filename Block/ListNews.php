@@ -3,22 +3,22 @@
 namespace Inchoo\Sample03\Block;
 
 use Magento\Framework\View\Element\Template\Context;
-use Inchoo\Sample03\Model\News;
+use Inchoo\Sample03\Model\ResourceModel\News\CollectionFactory;
 
 class ListNews extends \Magento\Framework\View\Element\Template
 {
 
-    protected $news;
+    protected $newsFactory;
 
-    public function __construct(Context $context, News $news)
+    public function __construct(Context $context, CollectionFactory $newsFactory)
     {
-        $this->news = $news;
+        $this->newsFactory = $newsFactory;
         parent::__construct($context);
     }
 
     public function getNews()
     {
-        $news = $this->news->getCollection();
+        $news = $this->newsFactory->create();
         $news->setOrder('news_id', 'DESC');
         $news->setPageSize(10);
 
