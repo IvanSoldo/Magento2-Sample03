@@ -2,37 +2,31 @@
 
 namespace Inchoo\Sample03\Controller\News;
 
+use Magento\Framework\App\Action\Action;
 use Magento\Framework\App\Action\Context;
+use Magento\Framework\Registry;
 use Magento\Framework\View\Result\PageFactory;
 
-/**
- * Class ListAction
- * @package Inchoo\Sample03\Controller\Index
- *
- * List is reserved keyword in PHP, so we're using Action suffix in controller name !!
- */
-class View extends \Magento\Framework\App\Action\Action
+class View extends Action
 {
-
-    private $resultPageFactory;
-
     /**
-     * ListAction constructor.
-     * @param \Magento\Framework\App\Action\Context $context
-     * @param \Magento\Framework\View\Result\PageFactory $resultPageFactory
+     * @var PageFactory
      */
-    public function __construct(Context $context, PageFactory $resultPageFactory)
+    protected $resultPageFactory;
+    protected $newsRegistry;
+
+    public function __construct(Context $context, PageFactory $resultPageFactory, Registry $newsRegistry)
     {
-        $this->resultPageFactory = $resultPageFactory;
         parent::__construct($context);
+        $this->resultPageFactory = $resultPageFactory;
+        $this->newsRegistry = $newsRegistry;
     }
 
-    /**
-     * @return \Magento\Framework\View\Result\Page
-     */
     public function execute()
     {
+        $id = $this->getRequest()->getParam('id');
+        $this->newsRegistry->register('news_id', $id);
+
         return $this->resultPageFactory->create();
     }
 }
-

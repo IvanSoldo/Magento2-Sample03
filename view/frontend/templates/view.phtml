@@ -1,6 +1,10 @@
 <?php
 /**
- * @var \Inchoo\Sample03\Block\View $block
+ * @var \Inchoo\Sample03\Block\NewsViewBlock $block
+ * @var \Inchoo\Sample03\ViewModel\NewsViewModel $viewModel
  */
+$newsData = $block->getViewModel();
+$news = $newsData->getNewsById($block->getNewsId());
 ?>
-<h1><?= $block->showNews($block->getRequest()->getParam('id'))['title']; ?></h1>
+
+<h1><?= $news->getTitle() ?></h1>
