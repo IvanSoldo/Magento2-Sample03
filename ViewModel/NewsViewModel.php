@@ -2,44 +2,68 @@
 
 namespace Inchoo\Sample03\ViewModel;
 
-use Inchoo\Sample03\Model\ResourceModel\News\CollectionFactory;
+use Inchoo\Sample03\Api\NewsRepositoryInterface;
+use Magento\Framework\Api\SearchCriteriaBuilder;
+use Magento\Framework\Api\SortOrder;
+use Magento\Framework\Exception\NoSuchEntityException;
 use Magento\Framework\View\Element\Block\ArgumentInterface;
 
 class NewsViewModel implements ArgumentInterface
 {
-    protected $newsCollectionFactory;
-    protected $newsFactory;
-    protected $newsResource;
+    /**
+     * @var \Inchoo\Sample03\Api\NewsRepositoryInterface
+     */
+    protected $newsRepository;
 
+    /**
+     * @var \Magento\Framework\Api\SearchCriteriaBuilder
+     */
+    protected $searchCriteriaBuilder;
+
+    /**
+     * @var \Magento\Framework\Api\SortOrder
+     */
+    protected $sortOrder;
+
+    /**
+     * @param NewsRepositoryInterface $newsRepository
+     * @param SearchCriteriaBuilder $searchCriteriaBuilder
+     * @param SortOrder $sortOrder
+     */
     public function __construct(
-        CollectionFactory $newsCollectionFactory,
-        \Inchoo\Sample03\Model\ResourceModel\News $newsResource,
-        \Inchoo\Sample03\Model\NewsFactory $newsFactory
+        \Inchoo\Sample04\Api\NewsRepositoryInterface $newsRepository,
+        SearchCriteriaBuilder $searchCriteriaBuilder,
+        SortOrder $sortOrder
     ) {
-        $this->newsCollectionFactory = $newsCollectionFactory;
-        $this->newsResource = $newsResource;
-        $this->newsFactory = $newsFactory;
+        $this->newsRepository = $newsRepository;
+        $this->searchCriteriaBuilder = $searchCriteriaBuilder;
+        $this->sortOrder = $sortOrder;
     }
 
     public function getNewsList()
     {
-        $newsList = $this->newsCollectionFactory->create();
-        $newsList->setOrder('news_id', 'DESC');
-        $newsList->setPageSize(10);
+        $this->sortOrder
+            ->setField('news_id')
+            ->setDirection("DESC");
+
+        $searchCriteria = $this->searchCriteriaBuilder->create();
+        $searchCriteria
+            ->setSortOrders([$this->sortOrder])
+            ->setPageSize(10);
+        $newsList = $this->newsRepository->getList($searchCriteria)->getItems();
 
         return $newsList;
     }
 
     public function getNewsById($id)
     {
-        $news = $this->newsFactory->create();
-        $this->newsResource->load($news, $id, 'news_id');
-
-        if ($news->getId() === null) {
-            return;
+        $news = '';
+        try {
+            $news = $this->newsRepository->getById($id);
+        } catch (NoSuchEntityException $e) {
+            echo $e->getMessage();
         }
 
         return $news;
     }
-
 }
