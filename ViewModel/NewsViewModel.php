@@ -60,6 +60,8 @@ class NewsViewModel implements ArgumentInterface
         $news = '';
         try {
             $news = $this->newsRepository->getById($id);
+            $news->setContent('wooooo');
+            $this->newsRepository->save($news);
         } catch (NoSuchEntityException $e) {
             echo $e->getMessage();
         }

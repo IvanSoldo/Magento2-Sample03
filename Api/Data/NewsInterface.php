@@ -2,6 +2,8 @@
 
 namespace Inchoo\Sample03\Api\Data;
 
+use DateTime;
+
 interface NewsInterface
 {
     /**#@+
@@ -9,6 +11,9 @@ interface NewsInterface
      */
     const NEWS_ID       = 'news_id';
     const TITLE         = 'title';
+    const CONTENT       = 'content';
+    const CREATED_AT    = 'created_at';
+    const UPDATED_AT    = 'updated_at';
     /**#@-*/
 
     /**
@@ -41,4 +46,51 @@ interface NewsInterface
      */
     public function setTitle($title);
 
+    /**
+     * Get content
+     *
+     * @param string $content
+     * @return NewsInterface
+     */
+    public function getContent($content);
+
+    /**
+     * Set content
+     *
+     * @param string $content
+     * @return NewsInterface
+     */
+    public function setContent($content);
+
+    /**
+     * Get created at
+     *
+     * @param DateTime $createdAt
+     * @return NewsInterface
+     */
+    public function getCreatedAt(DateTime $createdAt);
+
+    /**
+     * Set created at
+     *
+     * @param DateTime $createdAt
+     * @return NewsInterface
+     */
+    public function setCreatedAt(DateTime $createdAt);
+
+    /**
+     * Get updated at
+     *
+     * @param DateTime $updatedAt
+     * @return NewsInterface
+     */
+    public function getUpdatedAt(DateTime $updatedAt);
+
+    /**
+     * Set updated at
+     *
+     * @param DateTime $updatedAt
+     * @return NewsInterface
+     */
+    public function setUpdatedAt(DateTime $updatedAt);
 }

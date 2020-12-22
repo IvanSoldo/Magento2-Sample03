@@ -4,12 +4,12 @@ namespace Inchoo\Sample03\Api\Data;
 
 use Magento\Framework\Api\SearchResultsInterface;
 
-interface NewsSearchResultsInterface extends SearchResultsInterface
+interface CommentSearchResultsInterface extends SearchResultsInterface
 {
     /**
      * Get news list.
      *
-     * @return \Inchoo\Sample03\Api\Data\NewsInterface[]
+     * @return \Inchoo\Sample03\Api\Data\[]
      */
     public function getItems();
 

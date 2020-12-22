@@ -10,7 +10,7 @@ interface NewsRepositoryInterface
      * Retrieve news.
      *
      * @param int $newsId
-     * @return \Inchoo\Sample04\Api\Data\NewsInterface
+     * @return \Inchoo\Sample03\Api\Data\NewsInterface
      * @throws \Magento\Framework\Exception\LocalizedException
      */
     public function getById($newsId);
@@ -18,8 +18,8 @@ interface NewsRepositoryInterface
     /**
      * Save news.
      *
-     * @param \Inchoo\Sample04\Api\Data\NewsInterface $news
-     * @return \Inchoo\Sample04\Api\Data\NewsInterface
+     * @param \Inchoo\Sample03\Api\Data\NewsInterface $news
+     * @return \Inchoo\Sample03\Api\Data\NewsInterface
      * @throws \Magento\Framework\Exception\LocalizedException
      */
     public function save(Data\NewsInterface $news);
@@ -27,7 +27,7 @@ interface NewsRepositoryInterface
     /**
      * Delete news.
      *
-     * @param \Inchoo\Sample04\Api\Data\NewsInterface $news
+     * @param \Inchoo\Sample03\Api\Data\NewsInterface $news
      * @return bool true on success
      * @throws \Magento\Framework\Exception\LocalizedException
      */
@@ -37,7 +37,7 @@ interface NewsRepositoryInterface
      * Retrieve news matching the specified search criteria.
      *
      * @param \Magento\Framework\Api\SearchCriteriaInterface $searchCriteria
-     * @return \Inchoo\Sample04\Api\Data\NewsSearchResultsInterface
+     * @return \Inchoo\Sample03\Api\Data\NewsSearchResultsInterface
      * @throws \Magento\Framework\Exception\LocalizedException
      */
     public function getList(SearchCriteriaInterface $searchCriteria);

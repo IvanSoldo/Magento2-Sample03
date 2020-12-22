@@ -7,6 +7,6 @@ $newsViewModel = $block->getData('newsList');
 ?>
 
 <?php foreach ($newsViewModel->getNewsList() as $news): ?>
-    <h1><?= $news->getTitle(); ?></h1>
+    <h1><?= $news->getTitle() . ' ' . $news->getId() . ' ' . $news->getContent(); ?></h1>
 <?php endforeach; ?>
 

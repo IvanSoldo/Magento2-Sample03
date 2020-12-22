@@ -10,7 +10,7 @@ interface CommentRepositoryInterface
      * Retrieve news.
      *
      * @param int $commentId
-     * @return \Inchoo\Sample04\Api\Data\CommentInterface
+     * @return \Inchoo\Sample03\Api\Data\CommentInterface
      * @throws \Magento\Framework\Exception\LocalizedException
      */
     public function getById($commentId);
@@ -18,8 +18,8 @@ interface CommentRepositoryInterface
     /**
      * Save news.
      *
-     * @param \Inchoo\Sample04\Api\Data\CommentInterface $comment
-     * @return \Inchoo\Sample04\Api\Data\CommentInterface
+     * @param \Inchoo\Sample03\Api\Data\CommentInterface $comment
+     * @return \Inchoo\Sample03\Api\Data\CommentInterface
      * @throws \Magento\Framework\Exception\LocalizedException
      */
     public function save(Data\CommentInterface $comment);
@@ -27,7 +27,7 @@ interface CommentRepositoryInterface
     /**
      * Delete news.
      *
-     * @param \Inchoo\Sample04\Api\Data\CommentInterface $comment
+     * @param \Inchoo\Sample03\Api\Data\CommentInterface $comment
      * @return bool true on success
      * @throws \Magento\Framework\Exception\LocalizedException
      */
@@ -37,7 +37,7 @@ interface CommentRepositoryInterface
      * Retrieve news matching the specified search criteria.
      *
      * @param \Magento\Framework\Api\SearchCriteriaInterface $searchCriteria
-     * @return \Inchoo\Sample04\Api\Data\NewsSearchResultsInterface
+     * @return \Inchoo\Sample03\Api\Data\NewsSearchResultsInterface
      * @throws \Magento\Framework\Exception\LocalizedException
      */
     public function getList(SearchCriteriaInterface $searchCriteria);
