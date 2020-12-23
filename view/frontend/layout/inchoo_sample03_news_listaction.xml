@@ -3,7 +3,7 @@
         <referenceContainer name="content">
             <block class="Inchoo\Sample03\Block\ListNewsBlock" name="sample03" template="Inchoo_Sample03::listNews.phtml">
                 <arguments>
-                    <argument name="newsList" xsi:type="object">Inchoo\Sample03\ViewModel\NewsViewModel</argument>
+                    <argument name="newsList" xsi:type="object">Inchoo\Sample03\ViewModel\NewsListViewModel</argument>
                 </arguments>
             </block>
         </referenceContainer>
