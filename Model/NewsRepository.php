@@ -2,9 +2,9 @@
 
 namespace Inchoo\Sample03\Model;
 
-use Inchoo\Sample04\Api\Data\NewsInterface;
-use Inchoo\Sample04\Api\Data\NewsSearchResultsInterface;
-use Inchoo\Sample04\Api\NewsRepositoryInterface;
+use Inchoo\Sample03\Api\Data\NewsInterface;
+use Inchoo\Sample03\Api\Data\NewsSearchResultsInterface;
+use Inchoo\Sample03\Api\NewsRepositoryInterface;
 use Magento\Framework\Api\SearchCriteria\CollectionProcessorInterface;
 use Magento\Framework\Api\SearchCriteriaInterface;
 use Magento\Framework\Exception\CouldNotDeleteException;
@@ -39,10 +39,10 @@ class NewsRepository implements NewsRepositoryInterface
     private $collectionProcessor;
 
     public function __construct(
-        \Inchoo\Sample04\Api\Data\NewsInterfaceFactory $newsModelFactory,
-        \Inchoo\Sample04\Model\ResourceModel\News $newsResource,
-        \Inchoo\Sample04\Model\ResourceModel\News\CollectionFactory $newsCollectionFactory,
-        \Inchoo\Sample04\Api\Data\NewsSearchResultsInterfaceFactory $searchResultsFactory,
+        \Inchoo\Sample03\Api\Data\NewsInterfaceFactory $newsModelFactory,
+        \Inchoo\Sample03\Model\ResourceModel\News $newsResource,
+        \Inchoo\Sample03\Model\ResourceModel\News\CollectionFactory $newsCollectionFactory,
+        \Inchoo\Sample03\Api\Data\NewsSearchResultsInterfaceFactory $searchResultsFactory,
         CollectionProcessorInterface $collectionProcessor
     ) {
         $this->newsModelFactory = $newsModelFactory;
